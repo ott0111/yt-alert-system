@@ -1,1 +1,19 @@
-
+{
+  "name": "yt-alert-system",
+  "version": "1.0.0",
+  "description": "Discord + dashboard system that tracks YouTube uploads and sends alerts.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "dependencies": {
+    "discord.js": "^14.15.3",
+    "express": "^4.19.2",
+    "express-session": "^1.17.3",
+    "node-fetch": "^3.3.2",
+    "pg": "^8.11.5",
+    "ejs": "^3.1.10"
+  },
+  "type": "module"
+}
