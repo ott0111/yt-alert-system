@@ -1,1 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>YT Alert System Dashboard</title>
+  <link rel="stylesheet" href="/public/tailwind.css" />
+  <script defer src="/public/dashboard.js"></script>
+</head>
 
+<body class="bg-[#0d0b12] text-[#e4d9ff] min-h-screen">
+
+  <nav class="w-full bg-[#15121c] border-b border-[#2a2433] p-4 flex justify-between items-center">
+    <h1 class="text-2xl font-bold text-violet-400">YT Alert System</h1>
+    <a href="/auth/logout" class="text-violet-300 hover:text-violet-400 transition">Logout</a>
+  </nav>
+
+  <main class="p-6 max-w-5xl mx-auto">
+
+    <!-- Channels Section -->
+    <section class="mb-10">
+      <h2 class="text-xl font-semibold mb-4">Tracked Channels</h2>
+
+      <div id="channel-list" class="grid grid-cols-1 md:grid-cols-2 gap-4"></div>
+
+      <div class="mt-6 bg-[#15121c] p-4 rounded-lg border border-[#2a2433]">
+        <h3 class="text-lg font-semibold mb-2">Add New Channel</h3>
+        <input id="channel-name" type="text" placeholder="YouTube Channel Name"
+          class="w-full p-2 rounded bg-[#0d0b12] border border-[#2a2433] text-[#e4d9ff] mb-3" />
+        <button id="add-channel-btn"
+          class="px-4 py-2 bg-violet-600 hover:bg-violet-700 rounded text-white transition">
+          Add Channel
+        </button>
+      </div>
+    </section>
+
+    <!-- Logs Section -->
+    <section>
+      <h2 class="text-xl font-semibold mb-4">Bot Logs</h2>
+      <div class="bg-[#15121c] p-4 rounded-lg border border-[#2a2433]">
+        <pre id="logs" class="whitespace-pre-wrap text-sm"></pre>
+      </div>
+    </section>
+
+  </main>
+
+</body>
+</html>
