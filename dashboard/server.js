@@ -12,9 +12,11 @@ const __dirname = path.dirname(__filename);
 export function createServer(client) {
   const app = express();
 
+  // Body parsing
   app.use(express.json());
   app.use(express.urlencoded({ extended: true }));
 
+  // Sessions
   app.use(
     session({
       secret: "super-secret-session-key",
@@ -26,13 +28,15 @@ export function createServer(client) {
   // OAuth routes
   app.use("/auth", authRouter);
 
-  // Static files
-  app.use(
-    "/public",
-    express.static(path.join(__dirname, "public"))
-  );
+  // Static files (CSS, JS, images)
+  app.use("/public", express.static(path.join(__dirname, "public")));
 
-  // Dashboard view
+  // Public login page (no auth required)
+  app.get("/login", (req, res) => {
+    res.sendFile(path.join(__dirname, "views", "index.html"));
+  });
+
+  // Dashboard homepage (requires login)
   app.get("/", requireAuth, (req, res) => {
     res.sendFile(path.join(__dirname, "views", "index.html"));
   });
@@ -74,6 +78,7 @@ export function createServer(client) {
     res.sendFile(logPath);
   });
 
+  // Start server
   const PORT = process.env.PORT || 3000;
   app.listen(PORT, () => logInfo(`Dashboard running on port ${PORT}`));
 }
